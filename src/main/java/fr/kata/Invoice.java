@@ -1,15 +1,14 @@
 package fr.kata;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 public class Invoice {
 
-    private Integer invoiceNumber;
-    private Command command;
+    private final Integer invoiceNumber;
+    private final Command command;
 
-    private BigDecimal taxesAmount;
-    private BigDecimal totalAmount;
+    private final BigDecimal taxesAmount;
+    private final BigDecimal totalAmount;
 
     public Invoice(Integer invoiceNumber, Command command, BigDecimal taxesAmount, BigDecimal totalAmount) {
         this.invoiceNumber = invoiceNumber;

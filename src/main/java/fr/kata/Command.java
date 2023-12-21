@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class Command {
-    private Integer commandNumber;
-    private List<ProductLine> commandProductLines;
+    private final Integer commandNumber;
+    private final List<ProductLine> commandProductLines;
 
     public Command(Integer commandNumber, List<ProductLine> commandProductLines) {
         this.commandNumber = commandNumber;

@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductLine {
-    private ProductType productType;
-    private String productName;
-    private BigDecimal productHTPrice;
+    private final ProductType productType;
+    private final String productName;
+    private final BigDecimal productHTPrice;
 
-    private Integer quantity;
-    private boolean imported;
+    private final Integer quantity;
+    private final boolean imported;
 
     public ProductLine(ProductType productType, String productName, BigDecimal productHTPrice, Integer quantity,
                        boolean imported) {
