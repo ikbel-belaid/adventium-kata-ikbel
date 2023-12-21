@@ -1,7 +1,5 @@
-import fr.kata.Command;
-import fr.kata.Invoice;
-import fr.kata.ProductLine;
-import fr.kata.ProductType;
+package fr.kata;
+
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
