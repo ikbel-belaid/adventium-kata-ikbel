@@ -13,7 +13,6 @@ public class Main {
     }
 
     private static void firstInvoice() {
-        System.out.println("Input 1");
         List<ProductLine> listProductLine1 = new ArrayList<>();
         ProductLine p1 = new ProductLine(ProductType.BOOKS,"livre", new BigDecimal("12.49"),
                 2, Boolean.FALSE);
@@ -25,7 +24,6 @@ public class Main {
         listProductLine1.add(p2);
         listProductLine1.add(p3);
         Command c1 = new Command(1, listProductLine1);
-        c1.commandDetails();
 
         System.out.println("Output 1");
         Invoice i1 = new Invoice(1, c1, c1.computeTaxesAmount(), c1.computeTotalAmount());
@@ -34,7 +32,6 @@ public class Main {
 
     private static void secondInvoice() {
         System.out.println("**********************************************************************");
-        System.out.println("Input 2");
         List<ProductLine> listProductL2ine = new ArrayList<>();
         ProductLine p4 = new ProductLine(ProductType.FOOD,"boîtes de chocolats importée", new BigDecimal("10"),
                 2, Boolean.TRUE);
@@ -43,7 +40,6 @@ public class Main {
         listProductL2ine.add(p4);
         listProductL2ine.add(p5);
         Command c2 = new Command(2, listProductL2ine);
-        c2.commandDetails();
 
         System.out.println("Output 2");
         Invoice i2 = new Invoice(2, c2, c2.computeTaxesAmount(), c2.computeTotalAmount());
@@ -52,7 +48,6 @@ public class Main {
 
     private static void thirdInvoice() {
         System.out.println("**********************************************************************");
-        System.out.println("Input 3");
         List<ProductLine> listProductLine3 = new ArrayList<>();
         ProductLine p6 = new ProductLine(ProductType.OTHERS,"flacons de parfum importé", new BigDecimal("27.99"),
                 2, Boolean.TRUE);
@@ -67,7 +62,6 @@ public class Main {
         listProductLine3.add(p8);
         listProductLine3.add(p9);
         Command c3 = new Command(3, listProductLine3);
-        c3.commandDetails();
 
         System.out.println("Output 3");
         Invoice i3 = new Invoice(3, c3, c3.computeTaxesAmount(), c3.computeTotalAmount());

@@ -28,9 +28,4 @@ public class Command {
                 .map(p -> p.computeProductTTCPrice().multiply(BigDecimal.valueOf(p.getQuantity())))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
-
-    public void commandDetails() {
-
-        commandProductLines.forEach(p -> System.out.println(p.toString()));
-    }
 }
