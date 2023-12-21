@@ -30,6 +30,7 @@ public class Command {
     }
 
     public void commandDetails() {
+
         commandProductLines.forEach(p -> System.out.println(p.toString()));
     }
 }

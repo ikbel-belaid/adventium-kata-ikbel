@@ -4,11 +4,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        /********************************First Command************************************************/
+        /*******************************First Command************************************************/
         System.out.println("Input 1");
         List<ProductLine> listProductLine1 = new ArrayList<>();
         ProductLine p1 = new ProductLine(ProductType.BOOKS,"livre", new BigDecimal("12.49"),
@@ -26,7 +24,7 @@ public class Main {
         System.out.println("Output 1");
         Invoice i1 = new Invoice(1, c1, c1.computeTaxesAmount(), c1.computeTotalAmount());
         i1.invoiceDetails();
-        /*******************************Second Command*************************************************/
+        /******************************Second Command*************************************************/
         System.out.println("**********************************************************************");
         System.out.println("Input 2");
         List<ProductLine> listProductL2ine = new ArrayList<>();
@@ -42,7 +40,7 @@ public class Main {
         System.out.println("Output 2");
         Invoice i2 = new Invoice(2, c2, c2.computeTaxesAmount(), c2.computeTotalAmount());
         i2.invoiceDetails();
-        /*******************************Third Command*************************************************/
+        /******************************Third Command*************************************************/
         System.out.println("**********************************************************************");
         System.out.println("Input 3");
         List<ProductLine> listProductLine3 = new ArrayList<>();

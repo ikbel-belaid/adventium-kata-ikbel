@@ -55,10 +55,6 @@ public class ProductLine {
         return productHTPrice.add(computeProductTaxesAmount());
     }
 
-   /* public static BigDecimal round(BigDecimal value){
-        double p = 0.05;
-        return BigDecimal.valueOf(Math.ceil(value.doubleValue()/p)*p);
-    } */
 
     public static BigDecimal roundToNext5(BigDecimal bigDecimal, int scale) {
         // Get the last digit we need to decide if we have to round to 0, 5 or 10
@@ -81,14 +77,6 @@ public class ProductLine {
             return result.add(new BigDecimal("1").movePointLeft(scale - 1));
         }
     }
-    /*private static final BigDecimal ROUND = new BigDecimal("0.05");
-    private static final BigDecimal _0_00 = new BigDecimal("0.00");
-
-    public static BigDecimal round2(BigDecimal amount) {
-        BigDecimal value = amount.setScale(2, RoundingMode.CEILING);
-        BigDecimal reminder = value.remainder(ROUND);
-        return reminder.equals(_0_00) ? value : value.add(ROUND.subtract(reminder));
-    } */
 
     @Override
     public String toString() {
