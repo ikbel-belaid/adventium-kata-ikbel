@@ -23,6 +23,7 @@ public class ProductLine {
     }
 
     public Integer getQuantity() {
+
         return quantity;
     }
 
@@ -42,15 +43,52 @@ public class ProductLine {
         List<Integer> productTaxesRates = computeProductTaxesRates();
         if (!productTaxesRates.isEmpty()) {
             return productTaxesRates.stream()
-                    .map(t -> productHTPrice.multiply(BigDecimal.valueOf(t)).divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP))
-                    .reduce(new BigDecimal("0"), BigDecimal::add);
+                    .map(t -> roundToNext5(productHTPrice.multiply(BigDecimal.valueOf(t))
+                            .divide(BigDecimal.valueOf(100),2, RoundingMode.UP),2))
+                    .reduce(BigDecimal.ZERO, BigDecimal::add);
         }
-        return new BigDecimal("0");
+        return BigDecimal.ZERO;
     }
 
     public BigDecimal computeProductTTCPrice(){
+
         return productHTPrice.add(computeProductTaxesAmount());
     }
+
+   /* public static BigDecimal round(BigDecimal value){
+        double p = 0.05;
+        return BigDecimal.valueOf(Math.ceil(value.doubleValue()/p)*p);
+    } */
+
+    public static BigDecimal roundToNext5(BigDecimal bigDecimal, int scale) {
+        // Get the last digit we need to decide if we have to round to 0, 5 or 10
+        int lastDigit = bigDecimal
+                .movePointRight(scale)
+                .remainder(BigDecimal.TEN).intValue();
+        // Setting the Scale to scale - 1 to remove one more digit than we need
+        // and then increase the scale to what we want
+        BigDecimal result = bigDecimal
+                .setScale(scale - 1, RoundingMode.DOWN)
+                .setScale(scale, RoundingMode.UNNECESSARY);
+        if (lastDigit == 0) {
+            // Last digit is a 0 upscaling adds a 0
+            return result;
+        } else if (lastDigit <= 5) {
+            // rounding up to 5
+            return result.add(new BigDecimal("5").movePointLeft(scale));
+        } else {
+            // rounding up to 10
+            return result.add(new BigDecimal("1").movePointLeft(scale - 1));
+        }
+    }
+    /*private static final BigDecimal ROUND = new BigDecimal("0.05");
+    private static final BigDecimal _0_00 = new BigDecimal("0.00");
+
+    public static BigDecimal round2(BigDecimal amount) {
+        BigDecimal value = amount.setScale(2, RoundingMode.CEILING);
+        BigDecimal reminder = value.remainder(ROUND);
+        return reminder.equals(_0_00) ? value : value.add(ROUND.subtract(reminder));
+    } */
 
     @Override
     public String toString() {

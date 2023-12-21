@@ -12,20 +12,21 @@ public class Command {
         this.commandProductLines = commandProductLines;
     }
 
-    public List<ProductLine> getCommandProducts() {
+    public List<ProductLine> getCommandProductLines() {
+
         return commandProductLines;
     }
 
     public BigDecimal computeTaxesAmount(){
         return commandProductLines.stream()
                 .map(p -> p.computeProductTaxesAmount().multiply(BigDecimal.valueOf(p.getQuantity())))
-                .reduce(new BigDecimal("0"), BigDecimal::add);
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public BigDecimal computeTotalAmount(){
         return commandProductLines.stream()
                 .map(p -> p.computeProductTTCPrice().multiply(BigDecimal.valueOf(p.getQuantity())))
-                .reduce(new BigDecimal("0"), BigDecimal::add);
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public void commandDetails() {

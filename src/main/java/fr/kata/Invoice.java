@@ -6,7 +6,6 @@ public class Invoice {
 
     private final Integer invoiceNumber;
     private final Command command;
-
     private final BigDecimal taxesAmount;
     private final BigDecimal totalAmount;
 
@@ -17,8 +16,16 @@ public class Invoice {
         this.totalAmount = totalAmount;
     }
 
+    public BigDecimal getTaxesAmount() {
+        return taxesAmount;
+    }
+
+    public BigDecimal getTotalAmount() {
+        return totalAmount;
+    }
+
     public void invoiceDetails() {
-        command.getCommandProducts().forEach(p -> System.out.println(p.toString() + " : "+
+        command.getCommandProductLines().forEach(p -> System.out.println(p.toString() + " : "+
                 BigDecimal.valueOf(p.getQuantity()).multiply(p.computeProductTTCPrice()) + " TTC"));
 
         System.out.println("Montant des taxes : "+taxesAmount);
